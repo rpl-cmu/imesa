@@ -50,7 +50,10 @@ We additionally provide a more generic interface (`IncrementalSAMAgent`) that ca
 Note: This library also provides functionality to handle global variables that are variables in the SLAM optimization that do not necessarily belong to any singular robot (i.e. landmarks). Such variables are marked with a `#` character in their variable key. Handling these variables requires some additional information to be shared during communication (keys of global vars). This functionality was not explicitly discussed in the paper above, but has been tested and users are safe to use this functionality!
 
 ## Dependencies
-The only dependency for iMESA is [GTSAM](https://github.com/borglab/gtsam). iMESA should not be sensitive to GTSAM version, but has only been tested with `gtsam 4.2a8`. See the GTSAM github page for installation instructions.
+The only dependency for iMESA is [GTSAM](https://github.com/borglab/gtsam). iMESA is sensitive to the version of GTSAM used. We have tested iMESA with GTSAM version `4.2.0` and recommend its use. 
+
+iMESA additionally needs some development functionality in GTSAM that unfortunately is not included in any tagged release. The details of these changes are summarized in this [pull request](https://github.com/borglab/gtsam/pull/1504). For convenience we provide these changes cherry-picked onto GTSAM `4.2.0` via our [fork](https://github.com/DanMcGann/gtsam) under branch `4.2.0-imesa`.
+
 
 ## Installation Instructions
 
@@ -68,7 +71,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(imesa)
 ```
 
-An example of this, in practice, can be found in the [experiments repository](https://github.com/rpl-cmu/imesa-experiments).
+The project in which iMESA is used will need to be build against the GTSAM version discussed above. An example of this in practice can be found in the [experiments repository](https://github.com/rpl-cmu/imesa-experiments).
 
 # Issues
 If you encounter issues with this library please fill out a bug report on github with details on how to reproduce the error!
