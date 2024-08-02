@@ -14,7 +14,10 @@
  * @author Dan McGann
  * @date October, 6th 2023
  */
+#include <gtsam/inference/Key.h>
 #include <gtsam/nonlinear/ISAM2.h>
+#include <gtsam/nonlinear/Values.h>
+#include <gtsam/nonlinear/NonlinearFactorGraph.h>
 
 namespace incremental_sam_agent {
 

@@ -12,9 +12,15 @@
  * @date October, 6th 2023
  */
 
+#include <gtsam/base/Matrix.h>
 #include <gtsam/geometry/Pose2.h>
 #include <gtsam/geometry/Pose3.h>
 #include <gtsam/nonlinear/NonlinearFactor.h>
+#include <gtsam/nonlinear/Values.h>
+
+#include <boost/optional.hpp>
+#include <boost/shared_ptr.hpp>
+#include <optional>
 
 namespace biased_priors {
 /**

@@ -20,10 +20,14 @@
  * @date October, 6th 2023
  */
 
+#include <gtsam/base/Matrix.h>
+#include <gtsam/inference/Key.h>
 #include <gtsam/inference/Symbol.h>
 #include <gtsam/nonlinear/ISAM2.h>
 #include <gtsam/nonlinear/NonlinearFactorGraph.h>
 #include <gtsam/nonlinear/Values.h>
+
+#include <memory>
 
 #include "imesa/biased_prior.h"
 #include "imesa/incremental_sam_agent.h"
