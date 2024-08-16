@@ -47,7 +47,10 @@ See `include/imesa/imesa.h` for inline documentation on this class's interface. 
 
 We additionally provide a more generic interface (`IncrementalSAMAgent`) that can be inherited from, to implement other incremental C-SLAM solvers that use the same 2-stage communication procedure. See our implementation of DDF-SAM2 in our [experiments repository](https://github.com/rpl-cmu/imesa-experiments) for an example of how to write a custom algorithm using this interface.
 
-Note: This library also provides functionality to handle global variables that are variables in the SLAM optimization that do not necessarily belong to any singular robot (i.e. landmarks). Such variables are marked with a `#` character in their variable key. Handling these variables requires some additional information to be shared during communication (keys of global vars). This functionality was not explicitly discussed in the paper above, but has been tested and users are safe to use this functionality!
+### Variable Conventions
+iMESA uses uses the keys of variables to implicitly identify which variables are shared with other robots. The library assumes that all variable keys are represented according to the `gtsam::Symbol` convention and consist of a character that denotes the unique identifier of the robot that owns the variable and a integer representing that index of the variable. For example the 15th pose of robot "a" will be `a15`. The iMESA algorithm identifies shared variables as any variable with a key denoting that it is owned by another robot.
+
+This library also provides functionality to handle global variables that are variables in the SLAM optimization that do not necessarily belong to any singular robot (i.e. landmarks). Such variables are marked with a `#` character in their variable key. Handling these variables requires some additional information to be shared during communication (keys of global vars). This functionality was not explicitly discussed in the paper above, but has been tested and users are safe to use this functionality!
 
 ## Dependencies
 The only dependency for iMESA is [GTSAM](https://github.com/borglab/gtsam). iMESA is sensitive to the version of GTSAM used. We have tested iMESA with GTSAM version `4.2.0` and recommend its use. 
